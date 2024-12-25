@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de pagamentos</title>
+    <style>
+        body {
+            background-image: url(pasta_imagem/imagem\ fundo\ 2.png);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8fcfb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(2, 2, 2, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0004ff;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #009eb3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pagamento de Salários</h1>
+        <label for="hourly-rate">Taxa por hora (USD):</label>
+        <input type="number" id="hourly-rate" placeholder="Digite o valor por hora" />
+
+        <label for="hours-worked">Horas trabalhadas:</label>
+        <input type="number" id="hours-worked" placeholder="Digite as horas trabalhadas" />
+
+        <button onclick="calculateSalary()">Calcular Salário</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateSalary() {
+            const hourlyRate = parseFloat(document.getElementById('hourly-rate').value);
+            const hoursWorked = parseFloat(document.getElementById('hours-worked').value);
+
+            if (isNaN(hourlyRate) || isNaN(hoursWorked)) {
+                document.getElementById('result').innerText = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            const totalSalary = hourlyRate * hoursWorked;
+            document.getElementById('result').innerText = `Salário total: $${totalSalary.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
